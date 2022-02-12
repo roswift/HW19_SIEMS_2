@@ -7,19 +7,28 @@ Note: This is a public-facing windows server that VSI employees access.
 #### Question 1
 - Several users were impacted during the attack on March 25th.
 - Based on the attack signatures, what mitigations would you recommend to protect each user account? Provide global mitigations that the whole company can use and individual mitigations that are specific to each user.
-  > Answer: `Global`
-  > 
-  > Answer: `user_j`
+
+  > Answer: `Global` - Introducing a `2FA` or `MFA` process into the log in process would greatly reduce the success of the threat actor seen in this log. 
+
+
+  > > - Answer: `user_j` - `An account was successfully logged on`
   > 
   > ![wsal_user_j_info](images/wsal_user_j_info.JPG)
+  > > - The log above shows that the attacker was able to successfully log in to `user_j` repeatedly.
+  > > - First thing to do here would be to change the password for `user_j`. Next you could set up user-specific alerts to monitor continued activity on this user. 
   > 
-  > Answer: `user_a`
+  > 
+  >  > - Answer: `user_a` - `A user account was locked out`
   > 
   > ![wsal_user_a_info](images/wsal_user_a_info.JPG)
+  > > - The log above shows that there was a `brute force` attack on `user_a`'s password.
+  > > - `user_a` should change their password promptly. They need to make sure there is enough length and complexity to ensure the length of time needed to brute force the account high. 
   > 
-  > Answer: `user_k`
+  > > -  Answer: `user_k` - `An attempt was made to reset an accounts password`
   > 
   > ![wsal_user_k_info](images/wsal_user_k_info.JPG)
+  > > - Here the logs show that the attacker knew `user_k`'s username or email credentials to log in. There were many attempts to reset the password and gain access, however the logs don't show any success on the attackers part. 
+  > > - Ideally you'd set user-specific alerts for `user_k` to monitor for types of activity like this in the future. 
 
 
 #### Question 2
